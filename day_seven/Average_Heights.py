@@ -12,7 +12,7 @@ def average_heights():
     while True:
         try:
             decisition = input(
-                "Do you want to add a new Student or find the the studen with the average height. Type Add or Average or Total: \n "
+                "Do you want to add a new Student or find the the studen with the average height. Type Add - Average - Most - Total: \n "
             ).lower()
             if decisition == "add":
                 while True:
@@ -31,17 +31,23 @@ def average_heights():
                         student = Student(student_name, student_height)
                         students_container.append(student)
                         print("Student added successfully")
-            elif decisition == "average":
-                average_height = 0
+            elif decisition == "most":
+                most_height = 0
                 actual_student = 0
                 for student in students_container:
-                    if student.height > average_height:
-                        average_height = student.height
+                    if student.height > most_height:
+                        most_height = student.height
                         actual_student = student.name
-                print(average_height, actual_student, "mts")
+                print(most_height, actual_student, "mts")
+            elif decisition == "average":
+                height_sum = 0
+                for student in students_container:
+                    height_sum += student.height
+                average = round(height_sum / len(students_container), 3)
+                print(f"the average of students is {average}cms.")
             elif decisition == "total":
                 for student in students_container:
-                    print(student.name)
+                    print(student.name, student.height)
 
         except ValueError:
             print("Please enter valid data")
