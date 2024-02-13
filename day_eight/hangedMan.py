@@ -19,7 +19,7 @@ def hangedMan():
             if check_win(blank_word_joined):
                 playing = False
             elif lives == 0:
-                 print("Game Over")
+                 print(f"Game Over, the solution es {random_word}")
                  break
             else:
                 letter = str(input(f"Welcome to the hangedMan!, please introduce a letter to find the word: { blank_word_joined } \n")).lower()
