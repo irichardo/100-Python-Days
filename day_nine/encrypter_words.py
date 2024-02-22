@@ -27,7 +27,6 @@ alphabet = [
     "z",
 ]
 
-
 def encrypt(shift: int, word: str):
     encrypted_word_index = []
     encrypted_word = ""
@@ -52,14 +51,31 @@ def decrypt(shift: int, word: str):
     for index in decrypted_word_index:
         if index - shift < 0:
             decrypted_word += alphabet[len(alphabet) + (index - shift)]
-            print(decrypted_word_index)
         else:
             decrypted_word += alphabet[index - shift]
     return decrypted_word
 
+def encryptWord():
+    word_to_encrypt = input("Please introduce the word that you want to encrypt: ").lower()
+    shift = int(input("Please introduce the shift: "))
+    word_encrypted = encrypt(word=word_to_encrypt,shift=shift)
+    print(f"This is your word encrypted: {word_encrypted}")
+    
+def decryptedWord():
+     word_to_decrypt = input("Please introduce the word that you want to decrypt: ").lower()
+     shift = int(input("Please introduce the shift: "))
+     word_decrypted =  decrypt(word=word_to_decrypt, shift=shift)
+     print(f"This is your word decrypted: {word_decrypted}")
 
-word = input("Introduce the phrase that do you want to encrypt: ").lower()
-shift = int(input("introduce the shift of your password: "))
-encrypted_word = encrypt(shift, word)
-decrypted_word = decrypt(shift, encrypted_word)
-print(decrypted_word)
+def security_controller():
+    while True:
+        try:
+            decision = int(input("Please, introduce:\n 1. Encrypt.\n 2. Decrypt.\n"))
+            if decision == 1:
+                encryptWord()
+            if decision == 2:
+                decryptedWord()
+        except Exception:
+            print(Exception)
+
+security_controller()
